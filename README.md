@@ -13,7 +13,8 @@ map, all in big glove-friendly readouts. It's **freeware**, has **no accounts an
 only ever **reads** from the bike.
 
 > **What this repo is.** This is the **public documentation & transparency mirror** for WolfPack Dash.
-> The app is in active development and its source is **currently private**; this repo carries the
+> The app is in active development with **no public release date yet**, and its source is **currently
+> private**; this repo carries the
 > docs, the full security model, and the secret-free cloud-backup infrastructure, kept in sync from
 > the main repo. It's here so anyone can see exactly what the app does with data and how it's secured
 > — without taking our word for it.
@@ -68,13 +69,15 @@ device first** — the cloud only ever stores unreadable ciphertext.
 
 ## 🤝 Support the trails
 
-WolfPack Dash is free, and it's better because of the local riding community. If you'd like to give
-back, please support the non-profits we ride with:
+WolfPack Dash is free, and **Chadware doesn't make a cent from it** — no ads, no accounts, nothing. If
+you feel like it earned something, please skip us and put that toward the groups below instead — they
+do the real work, and they're a big part of why this app exists.
 
-- **WestCore** — a local non-profit trail group that builds, maintains, and protects the places we
-  ride: **https://www.westcore.co/**
-- **Trails Preservation Alliance** — a Colorado non-profit working to keep motorized trails open:
-  **https://coloradotpa.org/pages/donate**
+- **WestCore** — Chad's local trail group in Montrose, Colorado (he's a member). They clear hundreds
+  of trees off the trails every year to keep the local riding open: **https://www.westcore.co/**
+- **Trails Preservation Alliance** — a trail & dirt-bike non-profit doing heavy lifting across
+  Colorado: their own trail crew, trail-respect education, and getting new trails built without giving
+  up the old rideable ones: **https://coloradotpa.org/pages/donate**
 
 **We receive nothing for this** — no money, no kickback, no perk. These are personal shout-outs, and
 donations go **directly** to the group, never through us or WolfPack Dash. (More groups may be added
