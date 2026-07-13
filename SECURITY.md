@@ -112,6 +112,16 @@ request** isn't.
 The electric dirt bikes Chad and Colleen ride, plus a phone-only mode for just about any bike. It's an
 independent app, not affiliated with or endorsed by any bike manufacturer.
 
+**Is there an iPhone / iOS version?**
+No, and there won't be. WolfPack Dash is Android-only — Chad doesn't own an iPhone or plan to get one,
+so there's no way to build or test one. Nothing against iPhones; it's just built on the hardware he
+rides with.
+
+**Will it run on my phone?**
+No idea, honestly — it's built and tested only on Chad's and Colleen's phones. It's a modern Android app
+(Android 8+), so it may well work on yours, but that's not promised, other devices aren't tested, and
+Chad can't take requests to support a specific phone. Works for you? Great. Doesn't? No hard feelings.
+
 ## 📚 Full details
 
 - **[Security deep dive](docs/SECURITY_DEEP_DIVE.md)** — the complete pen-test-oriented treatment:

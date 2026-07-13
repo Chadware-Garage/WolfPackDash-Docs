@@ -162,21 +162,30 @@ unreadable ciphertext.
 
 ---
 
-## 🤝 Support the trails
+## ❤️ Donate — support the trails
 
-WolfPack Dash is free, and **Chadware doesn't make a cent from it** — no ads, no accounts, nothing. If
-you feel like it earned something, please skip us and put that toward the groups below instead — they
-do the real work, and they're a big part of why this app exists.
+WolfPack Dash is **freeware**, and **I don't make a cent from it** — no ads, no accounts, no data sold,
+nothing. If you enjoy the app, have a little extra cash, and want to help out your fellow dirt bikers,
+please consider donating to any of the groups below. These are the folks who promote riding, keep our
+trails in shape, cut more trees off the trail in a year than you can imagine, get new trails built, and
+do amazing work on the trails we already have — they're a big part of why this app exists.
 
-- **WestCore** — Chad's local trail group in Montrose, Colorado (he's a member). They clear hundreds
-  of trees off the trails every year to keep the local riding open: **https://www.westcore.co/**
-- **Trails Preservation Alliance** — a trail & dirt-bike non-profit doing heavy lifting across
-  Colorado: their own trail crew, trail-respect education, and getting new trails built without giving
-  up the old rideable ones: **https://coloradotpa.org/pages/donate**
+**🌲 [WestCore](https://www.westcore.co/)** — Chad's local trail group in Montrose, Colorado (he's a
+member). Their volunteer crews clear **hundreds of downed trees** off the trails every season, keeping
+the local backcountry open and rideable when nobody else will. If you've ever rolled up on a freshly
+cleared trail, odds are a crew like this made that happen.
+**→ Donate: [westcore.co](https://www.westcore.co/)**
 
-**We receive nothing for this** — no money, no kickback, no perk. These are personal shout-outs, and
-donations go **directly** to the group, never through us or WolfPack Dash. (More groups may be added
-over time.)
+**⛰️ [Trails Preservation Alliance](https://coloradotpa.org/pages/donate)** — a Colorado trail &
+dirt-bike / motorsports non-profit doing the heavy lifting across the whole state. They run their
+**own trail crew**, teach riders how to respect the trails so we keep our access, and fight to get
+**new trails built without giving up** the old, still-rideable ones. Big-picture work that keeps the
+sport alive.
+**→ Donate: [coloradotpa.org/pages/donate](https://coloradotpa.org/pages/donate)**
+
+*Every dollar goes **straight to the group** — nothing passes through me, Chadware, or WolfPack Dash.
+These are personal shout-outs, never paid placements, and both are independent organizations, not
+affiliated with or endorsing this app. (More groups may be added over time.)*
 
 ---
 
@@ -214,6 +223,17 @@ the **[security deep dive](docs/SECURITY_DEEP_DIVE.md)**.
 It's built around the electric dirt bikes Chad and Colleen ride, and it also runs as a **phone-only
 dashboard** for just about any bike (with a smaller feature set when it isn't connected to one). It's
 an independent app and isn't affiliated with, endorsed by, or sponsored by any bike manufacturer.
+
+**Is there an iPhone version, or will it be ported to iOS?**
+No — WolfPack Dash is Android-only and will stay that way. Chad doesn't own an iPhone and doesn't plan
+to get one, so there's simply no way for him to build or test an iOS version. Nothing against iPhones —
+it's just a personal project built on the hardware he actually rides with.
+
+**Will it run on my phone?**
+Honestly, no idea! Chad built it for his own phone and Colleen's, and those are the only devices it's
+really tested on. It's a normal modern Android app (Android 8+), so there's a good chance it runs fine
+on yours — but that's not a promise, other phones aren't tested, and Chad can't take requests to support
+a specific device. If it works for you, great; if it doesn't, no hard feelings.
 
 **I found a security problem — can I tell you?**
 Yes, please — that's the one kind of feedback we always want, because it protects everyone. Open an
