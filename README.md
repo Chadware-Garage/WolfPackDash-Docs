@@ -123,4 +123,4 @@ WolfPack Dash is a personal, non-commercial project made for a few friends and t
 OpenStreetMap contributors, © OpenTopoMap (CC-BY-SA), and USGS (public domain); weather by
 [Open-Meteo](https://open-meteo.com).
 
-*Questions about the security model? See [SECURITY.md](SECURITY.md) or open an issue.*
+*Questions? See [SECURITY.md](SECURITY.md), the [security deep dive](docs/SECURITY_DEEP_DIVE.md), or [how it works](docs/PROCESS_FLOW.md) — or open an issue.*
