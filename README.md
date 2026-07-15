@@ -1,6 +1,6 @@
 <!--
   This is the PUBLIC repo's landing page. It is synced to the root README.md of the public
-  transparency mirror (chadware-software/WolfPackDash-Docs) by scripts/sync-public.ps1 and the
+  transparency mirror (Chadware-Garage/WolfPackDash-Docs) by scripts/sync-public.ps1 and the
   publish-docs workflow. Edit THIS file to change the public README — do not edit the mirror directly.
   See docs/PUBLIC_SYNC.md for how the sync works and what is / isn't published.
 -->
