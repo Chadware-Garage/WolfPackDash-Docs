@@ -17,7 +17,7 @@ telemetry on supported electric bikes.**
 
 ## 📱 Get WolfPack Dash
 
-### → **[Install it here](https://pub-e781e8ead3b74ae39e5413a968c4f234.r2.dev/install.html)**
+### → **[Install it here](https://get.chadman.net/install.html)**
 
 One-tap Android install — **no app store, no account, no ads.** On a phone that link downloads the signed app; on a desktop it shows a QR to scan.
 
