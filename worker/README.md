@@ -1,5 +1,9 @@
 # WolfPack Dash — backup write proxy (Cloudflare Worker)
 
+> **Published for transparency.** This is the exact ~60 lines that can write to our storage, so anyone
+> can verify what touches the bucket. You don't need to deploy anything — the setup notes below are
+> simply how *we* run it.
+
 This tiny Worker is the **only** thing that writes profile backups to R2. The app's restore path is a
 plain public GET from the r2.dev bucket; writes go through here so the app never carries an R2
 credential. Deploy it **once** and every user's cloud backup/restore works forever with no further

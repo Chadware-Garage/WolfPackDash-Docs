@@ -460,11 +460,12 @@ simply isn't updated for 6 months, it **gates on launch** and asks the user to u
 choosing Update opens a gated screen (*Update now / Try again / Exit app / Uninstall*) that drives
 the R2 update flow.
 
-- **Dev exemption (`isDevExempt`):** developers are never gated and never forced to update. Currently
-  that's **debug builds** (dev phones run debug APKs; the public gets release). This is moving to a
-  per-dev **dev-admin bond** — an encrypted per-dev profile in the R2 channel, tied to a dev's bonded
-  BLE relationship with a family bike, that both identifies the dev (exempting them from the clock)
-  and carries their synced dev profile. Proximity to a bike is deliberately no longer used.
+- **Dev exemption (`isDevExempt`):** the maintainers' own development builds are exempt from the update
+  prompt via a small, **revocable** server-side marker (debug builds are also exempt). It only affects
+  whether *that* build shows the reminder — it grants **no extra data access**, touches nothing on your
+  bike or phone, and never applies to a regular install. The marker can be revoked at any time, after
+  which that build falls back onto the normal 6-month clock. Proximity to a bike is deliberately not
+  used.
 - **Security value:** ties the app's lifespan to *staying current* — stale copies self-nudge toward
   the latest signed build, and the maintainer can retire the app for every non-dev user within 6
   months simply by stopping updates.

@@ -62,11 +62,11 @@ Two things worth holding onto as you read the rest:
 Everyone runs the **same freeware APK**. What differs is whether the app recognizes a bike as
 "one of ours."
 
-| | 🏍️ **Regular rider** | 🧑‍🔧 **Dev crew** (Chad, Colleen, Curtis, …) |
+| | 🏍️ **Regular rider** | 🧑‍🔧 **Dev crew** (Chad, Colleen, a riding buddy, …) |
 |---|---|---|
 | Who | Anyone who installs the freeware | People whose bike is compiled in as a "family bike" |
 | Bike recognized? | No — treated as a generic bike | Yes — it's on the app's known-bikes list |
-| Extra tools | None (clean, simple app) | Dev Menu: profiles, diagnostics, bike registry, cloud publish |
+| Extra tools | Profiles, Ride tracks (GPS logging + GPX/KML/CSV export), keep-connected-in-background | Everything a rider has **plus** the Dev Menu: GATT explorer, diagnostics/logs, bike registry, kill-switch controls, beta channel, cloud publish |
 | Setup effort | **Zero — fully hands-off** | **Zero after Chad adds them once** |
 | Cloud backup | ✅ backup codes (self-serve) | ✅ backup codes **+** auto-loading dev profiles |
 
@@ -171,8 +171,8 @@ on top of.
 
 ## 7. Dev profile sync (auto-setup a known bike) ☁️
 
-**Goal:** a dev (say Curtis) installs the freeware on a new phone, connects to *his* bike, and it
-configures itself — his theme, layout, thresholds — with him doing nothing.
+**Goal:** a dev (say a riding buddy) installs the freeware on a new phone, connects to *their* bike, and it
+configures itself — their theme, layout, thresholds — with them doing nothing.
 
 **How:** Chad publishes an **encrypted profile blob** for that bike's serial to the public R2
 bucket, one time. Any phone that later connects to that physical bike pulls it, decrypts it, and
@@ -300,7 +300,7 @@ flowchart LR
 |---|---|
 | Chad's Fast Alpha | Chad |
 | Colleen's Mighty Mini | Colleen |
-| Slower Than Chad | Curtis |
+| Slower Than Chad | Rider C |
 
 Because all three are in the compiled-in family list, each of them is **hands-off in daily use**:
 their bike is recognized automatically, their Dev Menu unlocks, their kill-switch clock stays reset
