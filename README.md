@@ -15,6 +15,16 @@ telemetry on supported electric bikes.**
 > 🏔️ **Coming someday to a bike near you.** In active development, at our own pace — no countdown, no
 > rush. Built by riders, for riders, and given away **free to anyone who can use it.**
 
+## 📱 Get WolfPack Dash
+
+### → **[Install it here](https://pub-e781e8ead3b74ae39e5413a968c4f234.r2.dev/install.html)**
+
+One-tap Android install — **no app store, no account, no ads.** On a phone that link downloads the signed app; on a desktop it shows a QR to scan.
+
+> _Right now that page is a **coming-soon** teaser (with a scannable QR that winks back 🐺) — the download unlocks at launch. iPhone isn't supported; Android only._
+
+---
+
 WolfPack Dash bolts to the handlebars and turns your phone into a full instrument cluster: GPS speed,
 trip stats, and an offline topo trail map that keep working with no signal on **any** dirt bike — and
 on a supported **electric** bike it adds live speed, gear state, and deep battery health over
