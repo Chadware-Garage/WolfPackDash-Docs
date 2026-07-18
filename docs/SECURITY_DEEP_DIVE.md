@@ -169,8 +169,8 @@ The binary is freeware — **assume the adversary has decompiled it** (`jadx`, `
   (including the plaintext backup code) can be extracted **with physical access + USB debugging**.
   This is an accepted, low-severity risk (it requires the same physical access that already breaks
   the out-of-scope "device compromise" line). Flagged as a hardening candidate in §11.
-- **No obfuscation of logic** (R8 minification aside). Anti-reverse-engineering is explicitly **not**
-  a goal; the design assumes transparency (it's open source).
+- **No obfuscation of logic** (R8 minification aside). Resisting inspection of our own app is explicitly
+  **not** a goal; the design assumes transparency (the docs and full security model are public).
 
 ### 5.2 Local storage & inter-process communication (IPC)
 

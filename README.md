@@ -64,6 +64,8 @@ install, the app keeps itself updated over the air, so you only sideload once.
 <br><br>
 <img src="docs/screenshots/charging.png" width="48%" alt="Charging status">
 <img src="docs/screenshots/menu.png" width="48%" alt="Glove-first full-screen menu">
+<br><br>
+<img src="docs/screenshots/engine-map.png" width="48%" alt="Per-map HP / Regen / Traction reference — with Alpha Dog mode">
 </p>
 
 <p align="center"><sub>Live telemetry over an offline topo map · 21 themes · battery &amp; charging alerts · glove-first menu</sub></p>
@@ -75,12 +77,12 @@ install, the app keeps itself updated over the air, so you only sideload once.
 ## ✨ Highlights
 
 - 🏍️ **Live dashboard** — speed, throttle, gear state, odometer, and trip stats at a glance
-- 🔋 **Deep battery insight** — pack %, per-cell voltages, temperatures, BMS firmware, and fault bits
+- 🔋 **Deep battery insight** — pack %, per-cell voltages, temperatures, cell balance, and fault alerts
 - 🗺️ **Offline trail maps** — Street, topo, USGS & satellite layers; save a region, or import a whole
   state as an offline **vector map**
 - 🛰️ **Ride tracking** — GPS logging with altitude/speed graphs and GPX/KML/CSV export
 - 📍 **Never lose the bike** — GPS speed backup if the link drops, a "find my parked bike" last-seen
-  pin, and (on the Lone Wolf cockpit) drop a **waypoint** with one glove tap and retrace your recorded
+  pin, and (on Option 1) drop a **waypoint** with one glove tap and retrace your recorded
   track back to it
 - 🎨 **Themes & colors** — swap the whole dashboard layout and color palette from a picker, applied
   app-wide; status colors (battery, throttle, gear) stay fixed so warnings always read the same
@@ -95,17 +97,19 @@ install, the app keeps itself updated over the air, so you only sideload once.
 | ⏱️ **Speed** | A speedometer in Standby/Neutral that flips to **throttle position** (green → red) in Drive or Crawl. Below it: a GPS trip meter, plus the bike's own odometer and hour meter. **Trip Stats** track avg/high/low altitude, avg/max speed, elapsed time, and distance. |
 | 🚦 **Status** | The current gear state as a live-animated icon — **Standby, Neutral, Reverse Crawl, Forward Crawl, Drive** — that switches to a pulsing **charging** display with an estimated kW rate the moment a charger is plugged in. |
 | 🗺️ **Map** | The active ride map and its HP / Regen / Traction-Control figures, over a dark topo map that follows you. The full **Ride Map** opens from the menu. |
-| 🔋 **Battery** | Live pack % and a segmented gauge, a voltage/temperature row that amber-flashes on out-of-range temps, and an **Engine Fault** alert if the bike reports one. Full diagnostics cover state of health, pack config, BMS firmware, raw fault bits, contactors, cell balancing, and every cell's voltage. |
+| 🔋 **Battery** | Live pack % and a segmented gauge, a voltage/temperature row that amber-flashes on out-of-range temps, and an **Engine Fault** alert if the bike reports one. Full diagnostics cover state of health, pack configuration, temperatures, cell balancing, and every cell's voltage. |
 
-The default **Pack View** presents these as one instrument cluster — a big speed readout ringed by a
-live **throttle** meter, a tall **battery** gauge with charge % and range, and live **altitude /
-weather**, all over a **topo map** that follows you with a dirt-bike marker. **Lone Wolf** spreads the
-same readings across big, glove-friendly tiles.
+Two dashboards ship, and you switch between them anytime under Themes. The default **Option 1** is the
+big, glove-friendly cockpit — huge speed & battery, a central map, and range at a glance, laid out as
+large tap-tiles for gloved hands. **Option 2** presents the same readings as one info-dense instrument
+cluster — a big speed readout ringed by a live **throttle** meter, a tall **battery** gauge with charge
+% and range, and live **altitude / weather**, all over a **topo map** that follows you.
 
-🧤 **Glove-first & touch-proof.** The dash face is display-only, so roost, bar-tumbles, and stray glove
-touches do nothing. A deliberate **press-and-hold** anywhere opens a full-screen menu of big buttons —
-**Dashboard, Map, Weather, Settings, Bike customization, Bluetooth, Themes, Help, and About** — and
-every feature is driven from there.
+🧤 **Glove-first.** Everything is a big, glove-sized target. Tapping the **top banner** opens a
+full-screen menu of big buttons — **Settings, Map, Weather, Bluetooth, Themes, Help, About, and
+Donate** — and the dashboard's own tiles open **full-screen info pages** (trip stats with an elevation
+chart, battery diagnostics, weather, and a combined GPS + connection telemetry page), each
+auto-returning to the dash after a few seconds so nothing sits covering the trail.
 
 ---
 
@@ -128,7 +132,7 @@ every feature is driven from there.
 
 ## 🎨 Make it yours
 
-Swap the whole dashboard *theme* (**Pack View** or the glove-friendly **Lone Wolf** cockpit) and pick a
+Swap the whole dashboard (**Option 1**, the glove-friendly cockpit, or **Option 2**, the info-dense cluster) and pick a
 color palette — several dark themes that reskin every screen, mixed and matched and applied app-wide.
 Set thresholds (low-battery, cell-balance, temperature), tune haptics, keep-screen-on, dim-&-sleep-when-parked,
 and units — then **back your whole setup up to the cloud with a backup code** and restore it on another
@@ -146,7 +150,7 @@ A snapshot of what's under the hood (a lot, for a personal project):
 | 📏 **Source** | **~21,000** lines of Kotlin · **~11,600** lines of XML — **~33,000 lines** total |
 | 🖥️ **Screens** | **20+** activities — two full dashboard designs, offline ride map, settings, themes, cloud backup, and more |
 | 🎨 **Themes** | **21** built-in color themes |
-| 📡 **Live telemetry** | **47** decoded bike data fields — speed, battery %, per-cell voltages, pack/motor/inverter temps, charger, range… |
+| 📡 **Live telemetry** | **47** live bike data fields the bike broadcasts — speed, battery %, cell balance, pack/motor temps, charger, range… |
 | 📚 **Docs** | a process-flow guide, a pen-test-grade security deep dive, and these public transparency pages |
 | ☁️ **Cloud** | one **~80-line** Cloudflare Worker fronts every write; the app itself carries **zero cloud credentials** |
 | 🛠️ **History** | **100+** commits, built end-to-end with AI pair-programming |
@@ -184,23 +188,15 @@ unreadable ciphertext.
 We're not taking feature requests — but there's one conversation we'd genuinely love to have.
 
 WolfPack Dash exists because we wanted a better, glove-friendly way to see **our own** bikes' telemetry
-on the trail — so we built it. We'd **so much rather do that _with_ the company that makes the electric
-dirt bikes we ride than around them.** (If you ride these bikes, you can probably guess who we mean —
-and we'd be honored to talk.)
+on the trail — so we built it, and kept it **strictly read-only** with the bike.
 
-Official, blessed, **secure read-only access** to a bike's telemetry would let independent builders
-like us make great tools for riders — without ever touching anything that controls the bike. Open to
-**read**, locked down to **write**: better for riders, and safe for the manufacturer. We'll always
-rather build a bridge than a workaround.
+We think there's a great future in **official, blessed, read-only telemetry access** for independent
+builders: it lets people like us make genuinely useful tools for riders — without ever touching anything
+that controls the bike. Open to **read**, locked down to **write**: better for riders, and safe for the
+maker.
 
-And to be clear: **none of this is a knock on anyone's engineering.** It's a dirt bike — not an
-$80,000 truck, and certainly not a bank vault — and it doesn't need to be locked down like one.
-Physical access wins on *any* bike (you can fire up a keyed KTM 500 by swapping a couple of wires), so
-nobody's pretending telemetry is Fort Knox, and it shouldn't have to be. We're just reading numbers off
-our **own** bikes to build a nicer dashboard — low-stakes, good-faith, rider to maker.
-
-If you're on that side of the fence — or you can help make the introduction happen — that door is
-**wide open**. Please [open an issue](../../issues) and we'll take it somewhere better from there.
+If you build electric bikes and that idea resonates — or you can help make an introduction happen — that
+door is **wide open**. Please [open an issue](../../issues) and we'll take it somewhere good from there.
 
 ---
 

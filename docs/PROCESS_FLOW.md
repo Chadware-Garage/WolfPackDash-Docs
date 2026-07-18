@@ -41,7 +41,7 @@ The app is layered. Each layer only talks to the one below it:
 flowchart TD
     U["👤 You (gloves on)"] --> UI["📱 Screens<br/>Dashboard · Map · Settings · Cloud Backup"]
     UI --> VM["🧠 View models & stores<br/>ProfileStore · SettingsStore · OwnedBikesStore"]
-    VM --> BLE["📡 BLE layer<br/>scan · connect · decode telemetry"]
+    VM --> BLE["📡 BLE layer<br/>scan · connect · read telemetry"]
     VM --> NET["☁️ Cloud (optional)<br/>updates · dev profiles · backups"]
     BLE --> BIKE["🏍️ The bike (read-only)"]
     NET --> R2["🪣 Public R2 bucket + tiny write Worker"]
@@ -66,7 +66,7 @@ Everyone runs the **same freeware APK**. What differs is whether the app recogni
 |---|---|---|
 | Who | Anyone who installs the freeware | People whose bike is compiled in as a "family bike" |
 | Bike recognized? | No — treated as a generic bike | Yes — it's on the app's known-bikes list |
-| Extra tools | Profiles, Ride tracks (GPS logging + GPX/KML/CSV export), keep-connected-in-background | Everything a rider has **plus** the Dev Menu: GATT explorer, diagnostics/logs, bike registry, kill-switch controls, beta channel, cloud publish |
+| Extra tools | Profiles, Ride tracks (GPS logging + GPX/KML/CSV export), keep-connected-in-background | Everything a rider has **plus** the Dev Menu: BLE diagnostics/logs, bike registry, kill-switch controls, beta channel, cloud publish |
 | Setup effort | **Zero — fully hands-off** | **Zero after Chad adds them once** |
 | Cloud backup | ✅ backup codes (self-serve) | ✅ backup codes **+** auto-loading dev profiles |
 
@@ -128,13 +128,12 @@ A couple of side-flows hang off "Dashboard live" the first time:
 
 ## 5. Live data: bike → dashboard 📡
 
-Once connected, the bike **pushes** telemetry (BLE "notify"). Each message is raw bytes for a
-specific characteristic (speed, battery, temperatures…). The app decodes those bytes into real
-numbers and units, then updates the matching tile.
+Once connected, the bike **pushes** telemetry over BLE (notifications). The app reads those live
+values (speed, battery, temperatures…) and updates the matching tile with real numbers and units.
 
 ```mermaid
 flowchart LR
-    BIKE["🏍️ Bike"] -->|"notify (raw bytes)"| DEC["🔧 Decode<br/>raw bytes → values"]
+    BIKE["🏍️ Bike"] -->|"BLE notify"| DEC["🔧 Read<br/>live values"]
     DEC --> NUM["🔢 Real values<br/>e.g. 42 mph · 97% · 118°F"]
     NUM --> TILE["🟩 Dashboard tile<br/>+ warning colors if out of range"]
 ```
@@ -349,6 +348,6 @@ runs itself.
 
 ---
 
-*This guide describes the app as built. For the code-level "why" behind any specific decoder,
+*This guide describes the app as built. For the code-level "why" behind any specific reader,
 screen, or store, the source files carry detailed comments; this document is the map that tells you
 which one to open.*
