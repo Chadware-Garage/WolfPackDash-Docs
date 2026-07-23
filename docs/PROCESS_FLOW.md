@@ -71,7 +71,7 @@ Everyone runs the **same freeware APK**. What differs is whether the app recogni
 | Cloud backup | ✅ backup codes (self-serve) | ✅ backup codes **+** auto-loading dev profiles |
 
 The dividing line is a single check — whether the app recognizes the connected bike as one of ours —
-and it gates the Dev Menu, the "welcome, owner" popup, auto-naming, and the kill-switch keep-alive
+and it gates the Dev Menu, the "welcome, owner" popup, auto-naming, and the developer kill-switch exemption
 (see §10). If the app has never seen a family bike, none of the dev machinery ever appears.
 
 ---
@@ -86,7 +86,7 @@ intentionally kept in Chad's private notes rather than spelled out here.
 ```mermaid
 flowchart LR
     BIKE["🏍️ Connected bike<br/>(by its BLE identifier)"] --> Q{"On the<br/>known-bikes list?"}
-    Q -->|"Yes"| FAM["🧑‍🔧 Family bike<br/>friendly name · Dev Menu ·<br/>kill-switch keep-alive"]
+    Q -->|"Yes"| FAM["🧑‍🔧 Family bike<br/>friendly name · Dev Menu ·<br/>kill-switch exempt"]
     Q -->|"No"| GEN["🏍️ Generic bike<br/>live data only, no dev tools"]
 ```
 
@@ -302,8 +302,8 @@ flowchart LR
 | Slower Than Chad | Rider C |
 
 Because all three are in the compiled-in family list, each of them is **hands-off in daily use**:
-their bike is recognized automatically, their Dev Menu unlocks, their kill-switch clock stays reset
-by riding their own bike, their dev profile auto-loads (§7), and updates arrive on their own (§9).
+their bike is recognized automatically, their Dev Menu unlocks, their build is kill-switch-exempt
+(dev-bonded to their own bike), their dev profile auto-loads (§7), and updates arrive on their own (§9).
 
 ### Adding a new dev (one-time, manual — the part Chad is fine doing)
 

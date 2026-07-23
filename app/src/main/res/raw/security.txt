@@ -83,9 +83,10 @@ backups don't linger.
 
 ── Retirement (kill switch) ──
 
-This is a personal, non-commercial build. If it hasn't seen one of our
-bikes in a long time, it retires itself and asks to be uninstalled — by
-design, so old copies don't linger in the wild.
+This is a personal, non-commercial build. It self-updates from its own
+channel, and if a copy goes 6 months without any update, it retires
+itself and asks to be uninstalled — by design, so old copies don't
+linger in the wild. Every update resets that clock to another 6 months.
 
 
 ── Not affiliated with any bike manufacturer ──

@@ -70,7 +70,7 @@ Classifying the data tells us how hard we actually need to try. Most of what thi
 |---|---|---|---|
 | Ride telemetry (speed, battery, temps) | Low | RAM + optional local logs | **Never** |
 | GPS location / ride tracks | **Medium** (reveals where you ride/live) | Local only | **Never uploaded** |
-| Settings profile (theme, layout, thresholds) | Low (look-and-feel; **no telemetry**) | Local + *encrypted* cloud backup | Only as ciphertext, opt-in |
+| Your setup / settings (theme, layout, thresholds, matched map figures) | Low (look-and-feel; **no telemetry**) | Local, plus — if you choose Cloud — an *encrypted* cloud backup: a random-**code** slot, **or** a per-bike slot keyed by the **VIN** | Only as ciphertext, opt-in |
 | Bike VIN / serial | Low (it's **broadcast** over BLE) | Used only as a lookup key; not stored raw in cloud | It's public by nature |
 | Backup code | **Medium** (unlocks a backup slot) | Local `SharedPreferences`, shown to user | Only in the user's own hands |
 | Bonding PIN | Low (not an independent secret — see §5.3) | Handled on device | No |
@@ -278,6 +278,39 @@ This is **obfuscation-grade**, not strong confidentiality, and the code says so.
 *only* because of the data classification (§2). The documented future hardening is to mix a value
 read over the bonded BLE link into the key so the serial alone isn't enough.
 
+### 6.2b Serial-keyed **owner** backup (the everyday "In the cloud" setup)
+
+Since the profiles rework, **any** rider — not just a dev — can pick **"In the cloud"** for their
+setup (Settings → Profiles). On Save, the phone encrypts the current settings and uploads them **via
+the write Worker** to **one per-bike slot keyed by the bike's VIN/serial**, overwritten on every
+save, and pulled back automatically (or with a manual **"Restore my setup from the cloud"** button)
+when that bike connects on a fresh phone. Unlike §6.2's dev-publish path, name and key use
+**separate** labels, so a leaked object *name* never reveals the key:
+
+```
+name = SHA-256( "wolfpackdash/owner/v1/name" | serial )   → hex → object name under backups/
+key  = SHA-256( "wolfpackdash/owner/v1/key"  | serial )   → AES-256 key
+```
+
+⚠️ **The serial is public** (broadcast over BLE), so anyone who knows a VIN can derive **both** the
+name and the key — and, because this slot lives under `backups/` (the one prefix the Worker *does*
+write), they can also **overwrite** it. This is deliberately **last-writer-wins, obfuscation-grade**,
+accepted for three reasons:
+
+1. **The payload is low-value look-and-feel settings only** — never telemetry, never location.
+2. **It only takes effect on a physical connect** to that specific bike — a forged blob reaches a
+   victim only if they actually ride up to and connect that bike.
+3. **It can never carry authority.** "Dev" status is a *local* flag set only by physically connecting
+   to a recognized family bike; it is **never** stored in, or granted by, a cloud blob. On apply,
+   `SettingsSnapshot.apply()` **strips every dev-only key** on a non-dev phone. So even a perfectly
+   forged owner blob cannot flip a dev toggle or escalate a user to "dev" — there is structurally
+   nothing in the payload to escalate with.
+
+Encountering an identical VIN in the wild is rare, the data is low-value, and dev-forgery is
+impossible by construction — so the trade is intentional. The documented hardening (mix a value read
+over the **bonded BLE link** into the key, so the public serial alone can't derive it) would make the
+slot possession-proof; see §11.
+
 ### 6.3 Backup-code path (everyone) — the hardened design
 
 Used for user cloud backups. The backup **code** is a random secret, and — unlike the serial path —
@@ -376,10 +409,15 @@ Each scenario: the *story*, then difficulty / impact / mitigation / residual ris
 ### E. "I know a dev's bike serial — can I read/poison their profile?"
 - **Read:** yes, in principle — the serial-path key is serial-derived and the serial is public
   (§6.2). **Impact:** you read their *theme and layout*. No telemetry, no location, nothing sensitive.
-- **Poison (overwrite):** **no** — serial-path profiles live under `profiles/`, and the Worker only
-  writes under `backups/`. Publishing a profile is a manual dev upload from a credentialed account,
-  not something the public write path can reach.
-- **Residual:** confidentiality of *look-and-feel* dev profiles is weak-by-design; flagged in §11.
+- **Poison (overwrite):** for a **dev-published** profile (`profiles/`, a manual dev upload) — **no**:
+  the Worker only writes under `backups/`, so the public write path can't reach it. For the everyday
+  **owner "In the cloud"** slot (§6.2b, which *does* live under `backups/`) — **yes, in principle**:
+  anyone with the VIN can overwrite it (last-writer-wins). **Impact is bounded** — it's low-value
+  look-and-feel settings, it only applies when the victim physically connects that bike, and it can
+  **never** grant dev/authority (`apply()` strips dev-only keys on a non-dev phone). An identical VIN
+  in the wild is rare, so the trade is accepted.
+- **Residual:** confidentiality/integrity of *look-and-feel* serial-keyed data is weak-by-design;
+  flagged in §11, with the bonded-link-secret hardening as the fix.
 
 ### F. "I'll MITM the network."
 - **Story:** attacker intercepts cloud traffic.
@@ -482,9 +520,14 @@ fixed period after it was built, regardless of updates.
 
 Ranked roughly by value. None are critical for the stated threat model; all would raise the bar.
 
-1. **Serial-path profile confidentiality is obfuscation-grade** (§6.2): filename = key, serial is
-   public. *Hardening:* derive the key with a separate label (as the backup path already does) **and**
-   mix in a value read over the bonded BLE link, so the public serial alone can't decrypt.
+1. **Serial-keyed data is obfuscation-grade, and the owner slot is forgeable** (§6.2, §6.2b): the
+   serial is public, so serial-keyed blobs are readable — and the everyday **owner "In the cloud"**
+   slot (under `backups/`) is also **overwritable** by anyone with the VIN (last-writer-wins). Bounded
+   today by a low-value payload, a physical-connect gate, and the invariant that **authority is never
+   in the payload** (a forged blob can't grant dev — `apply()` strips dev-only keys on non-dev phones).
+   *Hardening:* mix a value read over the **bonded BLE link** into the key so the public serial alone
+   can't derive it — making the slot possession-proof. (The dev-publish path additionally uses
+   filename = key; the owner path already fixed that with separate name/key labels.)
 2. **`APP_TOKEN` is reversible** (ships in the APK). *Hardening:* have the app compute an **HMAC over
    the request body** with an app-embedded key — still not a true secret, but forces per-request work
    and ties the token to the payload, raising the scripting bar. (True auth would need per-user
@@ -525,4 +568,6 @@ For a pen tester doing a fast pass, the high-signal things to verify:
 
 *Pairs with the [Process Flow guide](PROCESS_FLOW.md) (how it works) and the in-app
 [security.txt](../app/src/main/res/raw/security.txt) (the user-facing promise). This deep dive
-reflects the current build, including the user backup-code cloud-backup path and its write Worker.*
+reflects the current build, including **both** cloud-backup paths — the random-**code** slot and the
+everyday **VIN-keyed owner** slot — their shared write Worker, and the invariant that authority (dev
+status) is never carried in a cloud payload.*

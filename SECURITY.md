@@ -21,7 +21,9 @@ linked at the bottom.
 - **The bike is read-only.** The app *displays* telemetry; it never sends commands to the bike or
   changes how it rides.
 - **The only cloud traffic** is: map tiles, a weather lookup, update checks, and — **only if you
-  choose** — an **encrypted** settings backup (theme/layout only, never telemetry or location).
+  choose** — an **encrypted** backup of your *setup* (theme / layout / thresholds only, never
+  telemetry or location), kept either behind a random **code** or keyed to your **bike's VIN** so a
+  new phone gets it back on connect.
 
 ---
 
@@ -33,9 +35,12 @@ linked at the bottom.
 - **Everything cloud-bound is encrypted or signed before it leaves your phone.** Settings backups use
   **AES-256-GCM**; the cloud only ever stores unreadable ciphertext. App updates are **signed** and
   **SHA-256-verified**, and Android refuses any update signed with a different key.
-- **Your backup code is the only key to your backup.** It's a random code we never see and can't
-  recover. Even the *name* of your backup file in the cloud can't unlock it — the name and the
-  encryption key are calculated separately on purpose.
+- **Two ways to key a cloud backup.** A **random code** (we never see it and can't recover it — the
+  file's cloud *name* and its encryption key are calculated separately, so even the name can't unlock
+  it); **or** the seamless option, a key derived from your **bike's VIN**, so your setup comes back on
+  its own when you connect that bike. The VIN isn't a secret (the bike broadcasts it), so that slot is
+  low-value, last-writer-wins convenience for your own look-and-feel settings — never anything
+  sensitive, and (see below) never anything that could make someone a "dev."
 - **It reads bike data over Bluetooth only** — no internet path to your bike exists in the app.
 
 ```mermaid
@@ -53,7 +58,7 @@ flowchart LR
 |---|---|---|
 | Speed / battery / temps | Low | **Never** |
 | GPS location & ride tracks | Medium | **Never uploaded** |
-| Settings (theme, layout, thresholds) | Low (no telemetry) | Only as **encrypted** backup, if you opt in |
+| Your setup (theme, layout, thresholds, map figures) | Low (no telemetry) | Only as an **encrypted** backup, if you opt in — behind a code, or keyed to your bike's VIN |
 | Backup code | Medium (unlocks your backup) | Only in **your** hands |
 
 ---
@@ -63,10 +68,14 @@ flowchart LR
 We think transparency means naming the weak spots, not hiding them:
 
 - **This is a personal build, not independently audited.** Trust it accordingly.
-- **The dev-profile sync is obfuscation-grade, not bulletproof.** The developer profiles that
-  auto-configure a *known* bike are encrypted with a key tied to that bike's serial — and the serial
-  is broadcast over Bluetooth. It protects low-value look-and-feel settings; it is not meant to guard
-  anything sensitive (and it doesn't carry anything sensitive).
+- **The VIN-keyed cloud setup is obfuscation-grade, not bulletproof.** The seamless "In the cloud"
+  option keys your backup to the bike's serial — which is broadcast over Bluetooth, so it isn't a
+  secret. Anyone who knows a VIN could read or overwrite that one slot (last-writer-wins). We accept
+  it because it only ever holds low-value look-and-feel settings, it only applies when you physically
+  connect the bike, and — importantly — **it can never make someone a "dev":** dev status is earned
+  only by physically connecting to a recognized bike and is never carried in a cloud backup, and any
+  dev-only setting is stripped when a backup is applied on a normal phone. (Want a hard secret instead?
+  Use the **code**-based backup.)
 - **Bluetooth security is the bike's, not ours.** The bike's pairing can be derived from its
   broadcast serial (that's how the manufacturer designed it), so being *near* a bike is roughly the
   same as being able to talk to it. Since the app is read-only and the data isn't secret, there's

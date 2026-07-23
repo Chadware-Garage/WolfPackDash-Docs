@@ -54,16 +54,16 @@ telemetry and never sends a command that controls the bike. No accounts, no ads,
 
 <p align="center"><sub>The cluster in motion — speed, throttle, gear and battery, animating right here in the README</sub></p>
 
-<p align="center"><b>Two dashboards · 21 color themes · portrait &amp; widescreen</b></p>
+<p align="center"><b>Four dashboards · 21 color themes · portrait &amp; widescreen</b></p>
 
 <p align="center">
-<img src="docs/screenshots/dash-lonewolf.png" width="23%" alt="Lone Wolf dashboard — big speedo and battery pill">
-<img src="docs/screenshots/dash-packview.png" width="23%" alt="Pack View dashboard — info-dense cluster">
-<img src="docs/screenshots/theme-navy.png" width="23%" alt="Pack View in the Navy theme">
-<img src="docs/screenshots/theme-purple.png" width="23%" alt="Pack View in the Dark Purple theme">
+<img src="docs/screenshots/dash-lonewolf.png" width="23%" alt="Data Driven 1 dashboard — big speedo and battery pill">
+<img src="docs/screenshots/dash-packview.png" width="23%" alt="Data Driven 2 dashboard — info-dense cluster">
+<img src="docs/screenshots/theme-navy.png" width="23%" alt="Data Driven 2 in the Navy theme">
+<img src="docs/screenshots/theme-purple.png" width="23%" alt="Data Driven 2 in the Dark Purple theme">
 </p>
 
-<p align="center"><sub>Lone Wolf &amp; Pack View, recolored — WolfPack, Navy, and Dark Purple, 3 of 21 themes</sub></p>
+<p align="center"><sub>Data Driven 1 &amp; 2, recolored — WolfPack, Navy, and Dark Purple, 3 of 21 themes</sub></p>
 
 <p align="center">
 <img src="docs/screenshots/dash-landscape.png" width="66%" alt="Widescreen landscape dashboard layout">
@@ -96,7 +96,7 @@ telemetry and never sends a command that controls the bike. No accounts, no ads,
   state as an offline **vector map**
 - 🛰️ **Ride tracking** — GPS logging with altitude/speed graphs and GPX/KML/CSV export
 - 📍 **Never lose the bike** — GPS speed backup if the link drops, a "find my parked bike" last-seen
-  pin, and (on Option 1) drop a **waypoint** with one glove tap and retrace your recorded
+  pin, and (on the map faces) drop a **waypoint** with one glove tap and retrace your recorded
   track back to it
 - 🎨 **Themes & colors** — swap the whole dashboard layout and color palette from a picker, applied
   app-wide; status colors (battery, throttle, gear) stay fixed so warnings always read the same
@@ -114,18 +114,19 @@ telemetry and never sends a command that controls the bike. No accounts, no ads,
 | --- | --- |
 | ⏱️ **Speed** | A speedometer in Standby/Neutral that flips to **throttle position** (green → red) in Drive or Crawl. Below it: a GPS trip meter, plus the bike's own odometer and hour meter. **Trip Stats** track avg/high/low altitude, avg/max speed, elapsed time, and distance. |
 | 🚦 **Status** | The current gear state as a live-animated icon — **Standby, Neutral, Reverse Crawl, Forward Crawl, Drive** — that switches to a pulsing **charging** display with an estimated kW rate the moment a charger is plugged in. |
-| 🗺️ **Map** | The active ride map and its HP / Regen / Traction-Control figures, over a dark topo map that follows you. The full **Ride Map** opens from the menu. |
+| 🗺️ **Map** | The active engine map and its HP / Regen / Traction-Control figures, over a dark topo map that follows you. Tap it to open the full **Ride Map**; tune the maps themselves under **Bike Setup** in the menu. |
 | 🔋 **Battery** | Live pack % and a segmented gauge, a voltage/temperature row that amber-flashes on out-of-range temps, and an **Engine Fault** alert if the bike reports one. Full diagnostics cover state of health, pack configuration, temperatures, cell balancing, and every cell's voltage. |
 
-Two dashboards ship, and you switch between them anytime under Themes. The default **Option 1** is the
+Four faces ship, and you switch between them anytime under Themes. The default, **Data Driven 1**, is the
 big, glove-friendly cockpit — huge speed & battery, a central map, and range at a glance, laid out as
-large tap-tiles for gloved hands. **Option 2** presents the same readings as one info-dense instrument
+large tap-tiles for gloved hands. **Data Driven 2** presents the same readings as one info-dense instrument
 cluster — a big speed readout ringed by a live **throttle** meter, a tall **battery** gauge with charge
-% and range, and live **altitude / weather**, all over a **topo map** that follows you.
+% and range, and live **altitude / weather**, all over a **topo map** that follows you. **Default** and
+**Simpleton** are two simpler, big-button Classic faces with no map.
 
 🧤 **Glove-first.** Everything is a big, glove-sized target. Tapping the **top banner** opens a
-full-screen menu of big buttons — **Settings, Map, Weather, Bluetooth, Themes, Help, About, and
-Donate** — and the dashboard's own tiles open **full-screen info pages** (trip stats with an elevation
+full-screen menu of big buttons — **Settings, Themes, Weather, Bluetooth, Bike Setup, Help, Donate,
+and About** — and the dashboard's own tiles open **full-screen info pages** (trip stats with an elevation
 chart, battery diagnostics, weather, and a combined GPS + connection telemetry page), each
 auto-returning to the dash after a few seconds so nothing sits covering the trail.
 
@@ -150,11 +151,19 @@ auto-returning to the dash after a few seconds so nothing sits covering the trai
 
 ## 🎨 Make it yours
 
-Swap the whole dashboard (**Option 1**, the glove-friendly cockpit, or **Option 2**, the info-dense cluster) and pick a
+Swap the whole dashboard between four faces — **Data Driven 1** (the glove-friendly cockpit), **Data Driven 2**
+(the info-dense cluster), and **Default** & **Simpleton** (two simple, big-button Classic faces) — and pick a
 color palette — several dark themes that reskin every screen, mixed and matched and applied app-wide.
 Set thresholds (low-battery, cell-balance, temperature), tune haptics, keep-screen-on, dim-&-sleep-when-parked,
-and units — then **back your whole setup up to the cloud with a backup code** and restore it on another
-phone. No account; the code is the only key, and it's encrypted on your device first, so we can't read it.
+and units.
+
+**Keep your setup safe.** Save your whole configuration — layout, theme, thresholds, engine-map figures — and
+choose where it lives: **On this phone** (private, never leaves the device), or **In the cloud**, so a new or
+wiped phone gets it back automatically the next time you connect your bike. That cloud slot is keyed to your
+**bike** and holds only look-and-feel settings — never telemetry or location — and it's **encrypted on your
+phone first**, so the cloud only ever stores unreadable ciphertext. Prefer a hard secret instead? A
+**backup-code** option keeps a copy behind a random code that only you hold. Either way there's **no account**,
+and the app carries **no cloud credentials** — see [Transparency](#-transparency-first).
 
 ---
 
@@ -165,8 +174,8 @@ A snapshot of what's under the hood (a lot, for a personal project):
 | | |
 |---|---|
 | 🧑‍💻 **Language** | **100% Kotlin** |
-| 📏 **Source** | **~21,000** lines of Kotlin · **~11,600** lines of XML — **~33,000 lines** total |
-| 🖥️ **Screens** | **20+** activities — two full dashboard designs, offline ride map, settings, themes, cloud backup, and more |
+| 📏 **Source** | **~24,000** lines of Kotlin (63 files) · **~16,500** lines of XML — **~40,000 lines** total |
+| 🖥️ **Screens** | **20+** activities — four dashboard faces, offline ride map, settings, themes, cloud backup, and more |
 | 🎨 **Themes** | **21** built-in color themes |
 | 📡 **Live telemetry** | **47** live bike data fields the bike broadcasts — speed, battery %, cell balance, pack/motor temps, charger, range… |
 | 📚 **Docs** | a process-flow guide, a pen-test-grade security deep dive, and these public transparency pages |
@@ -175,7 +184,7 @@ A snapshot of what's under the hood (a lot, for a personal project):
 
 > ⏱️ **And how long did all this take?** About **10 days.** Colleen headed out on a three-week
 > vacation on July 2nd — and this is what happens when you leave a dirt biker home alone with a laptop
-> and way too much free time. ~33,000 lines of Kotlin later, here we are. Send help (or a trail map). 🐺
+> and way too much free time. ~40,000 lines of code later, here we are. Send help (or a trail map). 🐺
 
 ---
 
