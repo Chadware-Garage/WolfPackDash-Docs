@@ -102,6 +102,8 @@ telemetry and never sends a command that controls the bike. No accounts, no ads,
   app-wide; status colors (battery, throttle, gear) stay fixed so warnings always read the same
 - 🌡️ **Trailside weather** — live outside temperature and a forecast pulled onto the dashboard, no
   API key and no account
+- 📲 **Home-screen widget** — an optional, resizable **Bike Battery** tile for your home screen: your
+  bike's last-known charge, condition and voltage at a glance, one tap to open the app
 - 🔄 **Sideload once** — no app store required; after the first install it quietly keeps itself
   updated over the air, and every update is signature-checked before it installs
 - 🔐 **Private by design** — read-only, on-device, no telemetry ever leaves the phone
