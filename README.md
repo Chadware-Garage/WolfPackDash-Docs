@@ -48,43 +48,61 @@ telemetry and never sends a command that controls the bike. No accounts, no ads,
 
 ## 📸 A look at it
 
-<p align="center">
-<img src="docs/screenshots/motion-speed.svg" width="82%" alt="Animated cluster — speed, throttle, gear and battery sweeping in the dark theme">
-</p>
-
-<p align="center"><sub>The cluster in motion — speed, throttle, gear and battery, animating right here in the README</sub></p>
-
-<p align="center"><b>Four dashboards · 21 color themes · portrait &amp; widescreen</b></p>
+<p align="center"><b>We ride mostly in widescreen — so that's the star.</b></p>
 
 <p align="center">
-<img src="docs/screenshots/dash-lonewolf.png" width="23%" alt="Data Driven 1 dashboard — big speedo and battery pill">
-<img src="docs/screenshots/dash-packview.png" width="23%" alt="Data Driven 2 dashboard — info-dense cluster">
-<img src="docs/screenshots/theme-navy.png" width="23%" alt="Data Driven 2 in the Navy theme">
-<img src="docs/screenshots/theme-purple.png" width="23%" alt="Data Driven 2 in the Dark Purple theme">
+<img src="docs/screenshots/dash-landscape.png" width="100%" alt="Widescreen cockpit — live telemetry over an offline topo map">
 </p>
 
-<p align="center"><sub>Data Driven 1 &amp; 2, recolored — WolfPack, Navy, and Dark Purple, 3 of 21 themes</sub></p>
+<p align="center"><sub>Built for the bars: a widescreen cockpit — live speed, battery health and engine map over an offline topo map that follows you.</sub></p>
 
 <p align="center">
-<img src="docs/screenshots/dash-landscape.png" width="66%" alt="Widescreen landscape dashboard layout">
+<img src="docs/screenshots/motion-speed.svg" width="60%" alt="Animated cluster — speed, throttle, gear and battery sweeping in the dark theme">
 </p>
 
-<p align="center"><sub>Same cluster, widescreen — for however your bars sit</sub></p>
+<p align="center"><sub>…and it moves — speed, throttle, gear and battery, animating right here in the README.</sub></p>
+
+<br>
+
+<p align="center"><b>🏁 Four faces, one app</b></p>
 
 <p align="center">
-<img src="docs/screenshots/dash-accelerating.png" width="48%" alt="Live dashboard — throttle, battery, HP/regen/traction over a topo map">
-<img src="docs/screenshots/offline-maps.png" width="48%" alt="Offline topo maps and find-my-bike">
-<br><br>
-<img src="docs/screenshots/theme-high-contrast.png" width="48%" alt="High-Contrast theme">
-<img src="docs/screenshots/battery-warning.png" width="48%" alt="Critical battery warning">
-<br><br>
-<img src="docs/screenshots/charging.png" width="48%" alt="Charging status">
-<img src="docs/screenshots/menu.png" width="48%" alt="Glove-first full-screen menu">
-<br><br>
-<img src="docs/screenshots/engine-map.png" width="48%" alt="Per-map HP / Regen / Traction reference — with Alpha Dog mode">
+<img src="docs/screenshots/dash-lonewolf.png" width="49%" alt="Data Driven 1 — the glove cockpit">
+<img src="docs/screenshots/dash-packview.png" width="49%" alt="Data Driven 2 — the instrument cluster">
+<br>
+<img src="docs/screenshots/dash-default.png" width="49%" alt="Default — a simple Classic face">
+<img src="docs/screenshots/dash-simpleton.png" width="49%" alt="Simpleton — the stripped-down three-panel face">
 </p>
 
-<p align="center"><sub>Live telemetry over an offline topo map · 21 themes · battery &amp; charging alerts · glove-first menu</sub></p>
+<p align="center"><sub><b>Data Driven 1</b> — the glove cockpit · <b>Data Driven 2</b> — the instrument cluster · <b>Default</b> &amp; <b>Simpleton</b> — simple big-button Classic faces. Switch anytime under Themes.</sub></p>
+
+<br>
+
+<p align="center"><b>🎨 21 color themes</b></p>
+
+<p align="center">
+<img src="docs/screenshots/theme-navy.png" width="32%" alt="Navy theme">
+<img src="docs/screenshots/theme-purple.png" width="32%" alt="Dark Purple theme">
+<img src="docs/screenshots/theme-high-contrast.png" width="32%" alt="High-Contrast theme">
+</p>
+
+<p align="center"><sub>The same dashboard, recolored — Navy, Dark Purple, High-Contrast, and more (21 in all). Status colors stay fixed so warnings always read the same.</sub></p>
+
+<br>
+
+<p align="center"><b>🔧 And more</b></p>
+
+<p align="center">
+<img src="docs/screenshots/offline-maps.png" width="32%" alt="Offline topo maps and find-my-bike">
+<img src="docs/screenshots/charging.png" width="32%" alt="Charging status">
+<img src="docs/screenshots/battery-warning.png" width="32%" alt="Critical battery warning">
+<br>
+<img src="docs/screenshots/engine-map.png" width="32%" alt="Bike Setup — per-map HP / Regen / Traction, with Alpha Dog mode">
+<img src="docs/screenshots/menu.png" width="32%" alt="Glove-first full-screen menu">
+<img src="docs/screenshots/widget.png" width="32%" alt="Home-screen Bike Battery widget">
+</p>
+
+<p align="center"><sub>Offline topo maps &amp; find-my-bike · charging · battery alerts · Bike Setup (engine maps) · glove-first menu · <b>home-screen widget</b></sub></p>
 
 ---
 
